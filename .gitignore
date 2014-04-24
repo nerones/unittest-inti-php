@@ -1,1 +1,6 @@
-/target
+target
+vendor
+.idea
+.project
+.settings
+*.sublime-*
