@@ -9,17 +9,23 @@ namespace Test\Shop;
 use \Salta\Shop\IShopDataAccess;
 use \Salta\Shop\Order;
 
-
-class DummyShopDataAccess  implements IShopDataAccess
+class SpyShopDataAccess implements IShopDataAccess
 {
+
+    private $saved = false;
 
     public function getProductPrice($id)
     {
-        // TODO: Implement getProductPrice() method.
+        throw new Exception("Unimplemented method");
     }
 
     public function save($id, Order $order)
     {
-        // TODO: Implement save() method.
+        $this->saved = true;
+    }
+
+    public function isSaved()
+    {
+        return $this->saved;
     }
 }

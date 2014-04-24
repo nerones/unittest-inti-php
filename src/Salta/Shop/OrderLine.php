@@ -67,6 +67,4 @@ class OrderLine
     {
         return $this->quantity;
     }
-
-
 }

@@ -3,23 +3,35 @@
 namespace Salta\Shop;
 
 use Exception;
+use InvalidArgumentException;
 
 class Order
 {
-	private $id;
-	private $dataAccess;
-	private $orderLines;
+    private $id;
+    private $dataAccess;
+    private $orderLines;
 
-	public function  __construct($id, IShopDataAccess $dataAccess)
-	{
-		if (is_null($dataAccess)) {
-			throw new Exception('Argumento Ilegal');
-		}
-		$this->id = $id;
-		$this->dataAccess = $dataAccess;
-		$this->orderLines = new OrderLineCollection($this);
+    /**
+     *
+     * @param [type] $id         [description]
+     * @param [type] $dataAccess [description]
+     */
+    //El valor por defecto de $dataAccess es nulo para poder aceptar null, si no una excepcion es lanzada
+    public function __construct($id, IShopDataAccess $dataAccess = null)
+    {
+        if (is_null($dataAccess)) {
+            throw new InvalidArgumentException('Argumento Ilegal');
+        }
+        $this->id = $id;
+        $this->dataAccess = $dataAccess;
+        $this->orderLines = new OrderLineCollection($this);
 
-	}
+    }
+
+    public function save()
+    {
+        $this->dataAccess->save($this->id, $this);
+    }
 
     /**
      * @param \Salta\Shop\IShopDataAccess $dataAccess
@@ -68,7 +80,4 @@ class Order
     {
         return $this->orderLines;
     }
-
-
 }
-	

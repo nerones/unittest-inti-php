@@ -10,16 +10,16 @@ use \Salta\Shop\IShopDataAccess;
 use \Salta\Shop\Order;
 
 
-class DummyShopDataAccess  implements IShopDataAccess
+class StubShopDataAccess  implements IShopDataAccess
 {
 
     public function getProductPrice($id)
     {
-        // TODO: Implement getProductPrice() method.
+        return 25;
     }
 
     public function save($id, Order $order)
     {
-        // TODO: Implement save() method.
+        throw new Exception("Unimplemented method");
     }
 }

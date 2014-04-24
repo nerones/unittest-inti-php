@@ -44,6 +44,4 @@ class Product
     {
         return $this->unitPrice;
     }
-
-
 }
