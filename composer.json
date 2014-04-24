@@ -1,0 +1,11 @@
+{
+	"require" : {
+		"phpunit/phpunit": "4.0.*"
+	},
+	"autoload": {
+		"psr-0": {
+            "Salta\\": "src/",
+            "Test\\Shop\\": "test/"
+        }
+	}
+}
